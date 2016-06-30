@@ -1,4 +1,5 @@
 #!/bin/bash
+##repo https://github.com/Infinality/fontconfig-infinality/tree/master/infinality
 
 #tar -xzvf ./repos.tar.gz
 tar -xzf ./vimix.tar.gz
@@ -33,9 +34,16 @@ echo "installing essential tools ..."
 sudo dnf config-manager --add-repo=http://repo.fdzh.org/FZUG/FZUG.repo 
 sudo dnf install fzug-release -y
 sudo dnf install -y vim gcc gcc-c++ gnome-tweak-tool powerline sogoupinyin sogoupinyin-selinux plymouth*
+sudo dnf install -y ffmpeg ffmpeg-libs gstreamer-ffmpeg xvidcore libdvdread libdvdnav lsdvd gstreamer-plugins-good gstreamer-plugins-bad gstreamer-plugins-ugly gstreamer-plugins-bad gstreamer-ffmpeg --nogpgcheck
+sudo dnf install -y vim-powerline.noarch
 echo "source /usr/share/powerline/bash/powerline.sh" >>~/.bashrc
 sudo plymouth-set-default-theme -R solar
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
+
+echo "config vim ..."
+git clone https://github.com/gmarik/vundle.git  ~/.vim/bundle/vundle
+
 
 echo "Done! Enjoy!"
 
